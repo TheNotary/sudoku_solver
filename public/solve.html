@@ -1,0 +1,263 @@
+<li>I need a big grid with input boxes</li>
+<li>I need to get those input boxes named with a good convention</li>
+
+<li>I need those input boxes to all get submitted as an array when the button is clicked</li>
+
+<li>I need the ajax response to solve the puzzle, or I need an alert message that says "NO SOLUTION!  WTF"</li>
+
+<style>
+	input{
+		width: 16px;
+		
+	}
+	
+	td span{
+		background: green;
+		width:16px;
+		position:relative;
+	}
+	#spacer{
+		background: black;
+	}
+</style>
+
+<form>
+	<table>
+		<tr>
+			<td><input id="a0" type="text" value="5" maxlength=1> </input></td>
+			<td><input id="a1" type="text" value="3" maxlength=1> </input></td>
+			<td><input id="a2" type="text" value="" maxlength=1> </input></td>
+			<td id="spacer"></td>
+			
+			
+			<td><input id="a3" type="text" value="" maxlength=1> </input></td>
+			<td><input id="a4" type="text" value="7" maxlength=1> </input></td>
+			<td><input id="a5" type="text" value="" maxlength=1> </input></td>
+			<td id="spacer"></td>
+			
+			<td><input id="a6" type="text" value="" maxlength=1> </input></td>
+			<td><input id="a7" type="text" value="" maxlength=1> </input></td>
+			<td><input id="a8" type="text" value="" maxlength=1> </input></td>
+		</tr>
+		
+		<tr>
+			<td><input id="b0" type="text" value="6" maxlength=1> </input></td>
+			<td><input id="b1" type="text" value="" maxlength=1> </input></td>
+			<td><input id="b2" type="text" value="" maxlength=1> </input></td>
+			<td id="spacer"></td>
+			
+			<td><input id="b3" type="text" value="1" maxlength=1> </input></td>
+			<td><input id="b4" type="text" value="9" maxlength=1> </input></td>
+			<td><input id="b5" type="text" value="5" maxlength=1> </input></td>
+			<td id="spacer"></td>
+			
+			<td><input id="b6" type="text" value="" maxlength=1> </input></td>
+			<td><input id="b7" type="text" value="" maxlength=1> </input></td>
+			<td><input id="b8" type="text" value="" maxlength=1> </input></td>
+		</tr>
+		
+		<tr>
+			<td><input id="c0" type="text" value="" maxlength=1> </input></td>
+			<td><input id="c1" type="text" value="9" maxlength=1> </input></td>
+			<td><input id="c2" type="text" value="8" maxlength=1> </input></td>
+			<td id="spacer"></td>
+			
+			<td><input id="c3" type="text" value="" maxlength=1> </input></td>
+			<td><input id="c4" type="text" value="" maxlength=1> </input></td>
+			<td><input id="c5" type="text" value="" maxlength=1> </input></td>
+			<td id="spacer"></td>
+			
+			<td><input id="c6" type="text" value="" maxlength=1> </input></td>
+			<td><input id="c7" type="text" value="6" maxlength=1> </input></td>
+			<td><input id="c8" type="text" value="" maxlength=1> </input></td>
+		</tr>
+		
+		<tr>
+			<td colspan="11"><hr/></td>
+		</tr>
+		
+		<tr>
+			<td><input id="d0" type="text" value="8" maxlength=1> </input></td>
+			<td><input id="d1" type="text" value="" maxlength=1> </input></td>
+			<td><input id="d2" type="text" value="" maxlength=1> </input></td>
+			<td id="spacer"></td>
+			
+			<td><input id="d3" type="text" value="" maxlength=1> </input></td>
+			<td><input id="d4" type="text" value="6" maxlength=1> </input></td>
+			<td><input id="d5" type="text" value="" maxlength=1> </input></td>
+			<td id="spacer"></td>
+			
+			<td><input id="d6" type="text" value="" maxlength=1> </input></td>
+			<td><input id="d7" type="text" value="" maxlength=1> </input></td>
+			<td><input id="d8" type="text" value="3" maxlength=1> </input></td>
+		</tr>
+		
+		<tr>
+			<td><input id="e0" type="text" value="4" maxlength=1> </input></td>
+			<td><input id="e1" type="text" value="" maxlength=1> </input></td>
+			<td><input id="e2" type="text" value="" maxlength=1> </input></td>
+			<td id="spacer"></td>
+			
+			<td><input id="e3" type="text" value="8" maxlength=1> </input></td>
+			<td><input id="e4" type="text" value="" maxlength=1> </input></td>
+			<td><input id="e5" type="text" value="3" maxlength=1> </input></td>
+			<td id="spacer"></td>
+			
+			<td><input id="e6" type="text" value="" maxlength=1> </input></td>
+			<td><input id="e7" type="text" value="" maxlength=1> </input></td>
+			<td><input id="e8" type="text" value="1" maxlength=1> </input></td>
+		</tr>
+		
+		<tr>
+			<td><input id="f0" type="text" value="7" maxlength=1> </input></td>
+			<td><input id="f1" type="text" value="" maxlength=1> </input></td>
+			<td><input id="f2" type="text" value="" maxlength=1> </input></td>
+			<td id="spacer"></td>
+			
+			<td><input id="f3" type="text" value="" maxlength=1> </input></td>
+			<td><input id="f4" type="text" value="2" maxlength=1> </input></td>
+			<td><input id="f5" type="text" value="" maxlength=1> </input></td>
+			<td id="spacer"></td>
+			
+			<td><input id="f6" type="text" value="" maxlength=1> </input></td>
+			<td><input id="f7" type="text" value="" maxlength=1> </input></td>
+			<td><input id="f8" type="text" value="6" maxlength=1> </input></td>
+		</tr>
+		
+		<tr>
+			<td colspan="11"><hr/></td>
+		</tr>
+		
+		<tr>
+			<td><input id="g0" type="text" value="" maxlength=1> </input></td>
+			<td><input id="g1" type="text" value="6" maxlength=1> </input></td>
+			<td><input id="g2" type="text" value="" maxlength=1> </input></td>
+			<td id="spacer"></td>
+			
+			<td><input id="g3" type="text" value="" maxlength=1> </input></td>
+			<td><input id="g4" type="text" value="" maxlength=1> </input></td>
+			<td><input id="g5" type="text" value="" maxlength=1> </input></td>
+			<td id="spacer"></td>
+			
+			<td><input id="g6" type="text" value="2" maxlength=1> </input></td>
+			<td><input id="g7" type="text" value="8" maxlength=1> </input></td>
+			<td><input id="g8" type="text" value="" maxlength=1> </input></td>
+		</tr>
+		
+		<tr>
+			<td><input id="h0" type="text" value="" maxlength=1> </input></td>
+			<td><input id="h1" type="text" value="" maxlength=1> </input></td>
+			<td><input id="h2" type="text" value="" maxlength=1> </input></td>
+			<td id="spacer"></td>
+			
+			<td><input id="h3" type="text" value="4" maxlength=1> </input></td>
+			<td><input id="h4" type="text" value="1" maxlength=1> </input></td>
+			<td><input id="h5" type="text" value="9" maxlength=1> </input></td>
+			<td id="spacer"></td>
+			
+			<td><input id="h6" type="text" value="" maxlength=1> </input></td>
+			<td><input id="h7" type="text" value="" maxlength=1> </input></td>
+			<td><input id="h8" type="text" value="5" maxlength=1> </input></td>
+		</tr>
+		
+		<tr>
+			<td><input id="i0" type="text" value="" maxlength=1> </input></td>
+			<td><input id="i1" type="text" value="" maxlength=1> </input></td>
+			<td><input id="i2" type="text" value="" maxlength=1> </input></td>
+			<td id="spacer"></td>
+			
+			<td><input id="i3" type="text" value="" maxlength=1> </input></td>
+			<td><input id="i4" type="text" value="8" maxlength=1> </input></td>
+			<td><input id="i5" type="text" value="" maxlength=1> </input></td>
+			<td id="spacer"></td>
+			
+			<td><input id="i6" type="text" value="" maxlength=1> </input></td>
+			<td><input id="i7" type="text" value="7" maxlength=1> </input></td>
+			<td><input id="i8" type="text" value="9" maxlength=1> </input></td>
+		</tr>
+		
+	</table>
+	<input type="button" value="SOLVE!" style="width:190px;" onclick="submitaroony()"></input>
+</form>
+
+<script type="text/javascript" src="/javascripts/jquery-1.6.2.min.js"></script>
+
+<span id="time"></span>
+
+<script>
+jQuery.ajaxSetup({ 
+  async: false    // makes it so it waits after sending the post request, aka plain old JAX
+})
+
+var glob;
+function submitaroony(){
+	var submission = "";
+	
+	for (var a = "a"; a != 'j'; a = incrementLetter(a))
+	{
+		for (var i = 0; i < 9; i = i + 1)
+		{
+			var val = $('#' + a + i).attr('value');
+			submission += val;
+			
+			if (i != 8)
+				submission += ",";
+			else
+				submission += 'n';
+		}
+	}
+	
+	//submission += ';';
+	
+	glob = $.parseJSON(
+		$.post('solvers.js', 
+		{ solver: {param: submission}},
+		null,
+		"text").responseText);
+	
+	if (glob.grid == "none")
+	{
+		$('#time').html("This Puzzle Is Errored Cannot Be Solved");
+	}
+	else
+	{
+		populateGrid(glob.grid);
+		$('#time').html("Brute Forced in " + glob.time + " seconds!");
+	}
+	
+	
+}
+
+function populateGrid(grid){
+	grid = grid.replace(/,/g, '');
+	var slot = 0;
+	
+	for (var a = "a"; a != 'j'; a = incrementLetter(a))
+	{
+		for (var i = 0; i < 9; i = i + 1)
+		{
+			//alert(grid[slot]);
+			$('#' + a + i).attr('value', grid[slot]);
+			
+			slot = slot + 1;
+		}
+	}
+}
+
+
+var alphaChars = "abcdefghij";
+function incrementLetter(letterToIncrement){
+ //find where the letter is at in the alphaChars string
+ var indexOfLetter = alphaChars.search(letterToIncrement);
+ //if it's not the last letter, then return the next
+ //letter in the string
+ if (indexOfLetter+1 < alphaChars.length) {
+   return(alphaChars.charAt(indexOfLetter+1));
+ }
+ //otherwise return the input letter
+ else{
+   return(letterToIncrement);
+ }
+}
+
+</script>

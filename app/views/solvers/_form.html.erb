@@ -1,0 +1,17 @@
+<%= form_for(@solver) do |f| %>
+  <% if @solver.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@solver.errors.count, "error") %> prohibited this solver from being saved:</h2>
+
+      <ul>
+      <% @solver.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
