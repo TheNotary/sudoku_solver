@@ -47,21 +47,33 @@ class SolversController < ApplicationController
     if puzzle_valid?
       respz = %x[cd CODE;./Sudoku.rb #{@solver}]     # Is there a way to set a timeout limit so this process get's shutdown after, say 2 seconds, and if it wasn't finished, we do some error code?
       
-      time_start = respz.index(":") + 2
-      new_line_loc = respz.index("\n")
-      time_end = new_line_loc - 21
-      
-      timez = respz[time_start, time_end]
+=begin             HERE'S AN EXAMPLE OF A GOOD RESPONSE WHEN IT SOLVES THE PUZZLE
+Solved for: 0.054372693 seconds
+5,3,4,6,7,8,9,1,2
+6,7,2,1,9,5,3,4,8
+1,9,8,3,4,2,5,6,7
+8,5,9,7,6,1,4,2,3
+4,2,6,8,5,3,7,9,1
+7,1,3,9,2,4,8,5,6
+9,6,1,5,3,7,2,8,4
+2,8,7,4,1,9,6,3,5
+3,4,5,2,8,6,1,7,9
+=end
+      respz =~ /\d(.*) /           # I'm parsing the completion time
+      timez = $~.to_s
       
       # check that the puzzle was solved, it might have not been
       if respz.length < 55
         puts "NO SOLUTION FOR THIS PUZZLE!!!"
         @solver = { :time => timez, :grid => "none" }
       else
-        grid_start = respz.index(",") - 1
-        respz = respz[grid_start, respz.length].gsub("\n", ",").chop
+        grid_start = respz.index(",") - 1                                # here's where I parse the grid.  Couldn't work it out with regex =(
+        grid = respz[grid_start, respz.length].gsub("\n", ",").chop
         
-        @solver = { :time => timez, :grid => respz }
+        #respz =~ /\d\,\z/
+        #grid = $~.to_s
+        
+        @solver = { :time => timez, :grid => grid }
       end
     end
     
