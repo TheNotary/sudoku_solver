@@ -22,7 +22,7 @@
 </style>
 
 <form>
-	<table>
+	<!-- <table>
 		<tr>
 			<td><input id="a0" type="text" value="5" maxlength=1> </input></td>
 			<td><input id="a1" type="text" value="3" maxlength=1> </input></td>
@@ -176,9 +176,16 @@
 			<td><input id="i8" type="text" value="9" maxlength=1> </input></td>
 		</tr>
 		
+	</table> -->
+	
+	<table id="grid">
+	
 	</table>
+	
 	<input type="button" value="SOLVE!" style="width:190px;" onclick="submitaroony()"></input>
 </form>
+
+
 
 <script type="text/javascript" src="/javascripts/jquery-1.6.2.min.js"></script>
 
@@ -188,6 +195,37 @@
 jQuery.ajaxSetup({ 
   async: false    // makes it so it waits after sending the post request, aka plain old JAX
 })
+
+
+// This handy function generates the HTML code for the input table
+// the dimensions could be changed, but don't change them because I'm using alpha characters that only
+// increment up to 'j'
+function createGrid(dimension){
+	dimension = 9;
+	
+	// Make the <tr> enclosing 9 times
+	for (var alpha = "a"; alpha != 'j'; alpha = incrementLetter(alpha))
+	{
+		
+		htmlCode = "<tr>\n";
+		for (var numeric = 0; numeric < dimension; numeric++)
+		{
+			htmlCode += '\t<td><input id="' + alpha + numeric + '" type="text" value="" maxlength=1> </input></td>\n';
+			
+			if (numeric % 3 == 2 && numeric != dimension - 1)
+				htmlCode += '\t<td id="spacer"></td>\n\n';
+		}
+		htmlCode += "</tr>\n"
+		
+		if (alpha == 'c' || alpha == 'f')
+			htmlCode += '<tr>\n \t<td colspan="11"><hr/></td>\n</tr>';
+			
+		$('#grid').append(htmlCode);
+	}
+}
+
+createGrid(9);
+populateGrid('5,3, , ,7, , , , ,6, , ,1,9,5, , , , ,9,8, , , , ,6, ,8, , , ,6, , , ,3,4, , ,8, ,3, , ,1,7, , , ,2, , , ,6, ,6, , , , ,2,8, , , , ,4,1,9, , ,5, , , , ,8, , ,7,9');
 
 var glob;
 function submitaroony(){
@@ -224,8 +262,6 @@ function submitaroony(){
 		populateGrid(glob.grid);
 		$('#time').html("Brute Forced in " + glob.time + " seconds!");
 	}
-	
-	
 }
 
 function populateGrid(grid){
@@ -236,7 +272,11 @@ function populateGrid(grid){
 	{
 		for (var i = 0; i < 9; i = i + 1)
 		{
-			//alert(grid[slot]);
+			if (grid[slot] == ' ') 
+			{
+				slot = slot + 1;
+				continue;
+			}
 			$('#' + a + i).attr('value', grid[slot]);
 			
 			slot = slot + 1;
@@ -245,8 +285,9 @@ function populateGrid(grid){
 }
 
 
-var alphaChars = "abcdefghij";
+
 function incrementLetter(letterToIncrement){
+ var alphaChars = "abcdefghij";
  //find where the letter is at in the alphaChars string
  var indexOfLetter = alphaChars.search(letterToIncrement);
  //if it's not the last letter, then return the next
