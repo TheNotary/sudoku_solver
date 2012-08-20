@@ -1,4 +1,4 @@
-#!/usr/local/rvm/rubies/ruby-1.9.2-p180/bin/ruby -w
+#!/usr/bin/env ruby
 load 'Block.rb'
 
 class Sudoku
